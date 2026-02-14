@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/* Variant Dark Mode */
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-fn-blue: #007bff;
+  --color-fn-dark-bg: #020617;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  /* LIGHT MODE: Gradasi Biru yang lebih tajam & modern */
+  background: linear-gradient(180deg, #f0f7ff 0%, #e0edff 50%, #d1e3ff 100%);
+  background-attachment: fixed;
+  color: #1e293b;
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  transition: background-color 0.5s ease;
+}
+
+/* DARK MODE: Deep Slate */
+:root.dark body {
+  background: var(--color-fn-dark-bg);
+  color: #e2e8f0;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #007bff44;
+  border-radius: 9999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+/* Grid Pattern */
+.bg-grid-slate-100 {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='%23007BFF'%3e%3cpath opacity='0.08' d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+}
